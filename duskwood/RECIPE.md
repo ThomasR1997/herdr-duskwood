@@ -13,6 +13,8 @@ a ding.
 
 ![Duskwood](preview.png)
 
+Source: [github.com/ThomasR1997/herdr-duskwood](https://github.com/ThomasR1997/herdr-duskwood)
+
 ## What you see
 
 Left to right, top to bottom. Colours are the `duskwood` theme

@@ -8,4 +8,4 @@ graveyard behind see-through panes, and your BMAD stories played as quests.
 The layout is in [`duskwood/`](duskwood): `layouts/`, `mods/`, `themes/`,
 `backgrounds/`, a `RECIPE.md` another agent can build it from, and
 `preview.png`. To add it, ask your agent to add
-`github.com/ThomasR1997/herdr-duskwood` and follow its recipe's notes.
+[github.com/ThomasR1997/herdr-duskwood](https://github.com/ThomasR1997/herdr-duskwood) and follow its recipe's notes.
