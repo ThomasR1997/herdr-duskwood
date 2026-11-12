@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1600" viewBox="0 0 2560 1600">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#05070e"/>
+      <stop offset="0.45" stop-color="#0d1222"/>
+      <stop offset="0.8" stop-color="#151a24"/>
+      <stop offset="1" stop-color="#0a0d10"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#c8d2e6" stop-opacity="0.35"/>
+      <stop offset="0.4" stop-color="#7f8fb4" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#3a4566" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="moon" cx="0.45" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#f1f1e6"/>
+      <stop offset="0.7" stop-color="#cfd3d6"/>
+      <stop offset="1" stop-color="#9aa1ad"/>
+    </radialGradient>
+    <linearGradient id="fog" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5b6a78" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#4b5866" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#2a323c" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+  </defs>
+
+  <rect width="2560" height="1600" fill="url(#sky)"/>
+
+  <!-- stars -->
+  <g fill="#c9d1e4" opacity="0.55">
+    <circle cx="210" cy="120" r="1.6"/><circle cx="480" cy="260" r="1.2"/><circle cx="760" cy="90" r="1.4"/>
+    <circle cx="1040" cy="210" r="1"/><circle cx="1310" cy="70" r="1.5"/><circle cx="1580" cy="180" r="1.1"/>
+    <circle cx="2350" cy="140" r="1.4"/><circle cx="2470" cy="330" r="1"/><circle cx="1180" cy="340" r="1.2"/>
+    <circle cx="640" cy="400" r="1"/><circle cx="90" cy="380" r="1.3"/><circle cx="1450" cy="420" r="0.9"/>
+  </g>
+
+  <!-- the moon over Raven Hill -->
+  <circle cx="1960" cy="330" r="420" fill="url(#glow)"/>
+  <circle cx="1960" cy="330" r="118" fill="url(#moon)"/>
+  <g fill="#8d93a0" opacity="0.35">
+    <circle cx="1925" cy="300" r="22"/><circle cx="1995" cy="365" r="15"/><circle cx="1990" cy="285" r="9"/>
+  </g>
+
+  <!-- clouds across the moon -->
+  <g filter="url(#blur)" fill="#1b2233" opacity="0.85">
+    <ellipse cx="1800" cy="380" rx="300" ry="34"/>
+    <ellipse cx="2150" cy="300" rx="220" ry="26"/>
+    <ellipse cx="700" cy="250" rx="420" ry="40"/>
+  </g>
+
+  <!-- far treeline -->
+  <path fill="#141a24" d="M0 1080 L60 1010 L90 1050 L140 960 L180 1040 L230 990 L280 1050 L330 940 L380 1030 L440 980 L500 1060 L560 970 L620 1040 L690 950 L740 1030 L800 990 L870 1070 L930 960 L990 1030 L1060 980 L1120 1060 L1190 950 L1250 1040 L1320 990 L1390 1070 L1450 960 L1520 1030 L1590 980 L1650 1060 L1720 950 L1790 1030 L1860 990 L1930 1060 L2000 960 L2070 1040 L2140 980 L2200 1060 L2270 950 L2340 1030 L2410 990 L2480 1050 L2560 970 L2560 1600 L0 1600 Z"/>
+
+  <rect y="900" width="2560" height="400" fill="url(#fog)" filter="url(#blur)"/>
+
+  <!-- nearer treeline -->
+  <path fill="#0b0f15" d="M0 1240 L70 1150 L120 1210 L190 1100 L240 1190 L320 1130 L380 1220 L460 1120 L520 1200 L600 1150 L680 1230 L760 1130 L840 1210 L920 1160 L1000 1240 L1080 1150 L1160 1220 L1240 1170 L1320 1240 L1400 1140 L1480 1220 L1560 1160 L1640 1240 L1720 1150 L1800 1210 L1880 1160 L1960 1240 L2040 1140 L2120 1220 L2200 1160 L2280 1240 L2360 1150 L2440 1220 L2560 1160 L2560 1600 L0 1600 Z"/>
+
+  <!-- graveyard on the hill -->
+  <g fill="#07090d">
+    <path d="M1500 1600 Q1750 1290 2050 1310 Q2350 1330 2560 1420 L2560 1600 Z"/>
+    <path d="M1700 1330 h26 v-58 q0 -18 -13 -18 q-13 0 -13 18 Z"/>
+    <path d="M1800 1312 h10 v-70 h20 v-12 h-20 v-24 h-12 v24 h-20 v12 h22 Z"/>
+    <path d="M1920 1310 h32 v-48 q0 -22 -16 -22 q-16 0 -16 22 Z"/>
+    <path d="M2060 1316 h12 v-66 h20 v-12 h-20 v-22 h-12 v22 h-20 v12 h20 Z"/>
+    <path d="M2190 1328 h28 v-44 q0 -18 -14 -18 q-14 0 -14 18 Z"/>
+    <path d="M2320 1352 h24 v-40 q0 -16 -12 -16 q-12 0 -12 16 Z"/>
+  </g>
+
+  <!-- dead trees framing the left -->
+  <g fill="none" stroke="#06080c" stroke-linecap="round">
+    <path stroke-width="46" d="M210 1600 C200 1400 240 1200 220 1000 C210 880 250 760 230 620"/>
+    <path stroke-width="22" d="M225 1050 C300 980 360 960 450 900 C510 860 560 800 600 760"/>
+    <path stroke-width="14" d="M450 900 C500 900 560 920 620 880"/>
+    <path stroke-width="18" d="M230 860 C170 800 120 780 60 700 C30 660 10 640 -10 620"/>
+    <path stroke-width="10" d="M90 740 C80 680 100 640 90 590"/>
+    <path stroke-width="14" d="M232 700 C280 640 300 560 360 500 C400 460 430 420 440 380"/>
+    <path stroke-width="8" d="M360 500 C410 500 450 480 500 440"/>
+    <path stroke-width="10" d="M230 640 C210 580 170 540 160 470"/>
+    <path stroke-width="6" d="M600 760 C620 730 650 720 680 690"/>
+    <path stroke-width="6" d="M440 380 C450 340 470 320 470 280"/>
+    <path stroke-width="34" d="M560 1600 C570 1460 540 1360 560 1240 C570 1180 560 1120 580 1080"/>
+    <path stroke-width="14" d="M562 1260 C620 1210 680 1200 740 1150"/>
+    <path stroke-width="10" d="M575 1120 C540 1080 520 1050 490 1020"/>
+  </g>
+
+  <!-- ground fog -->
+  <g filter="url(#blur)">
+    <ellipse cx="600" cy="1450" rx="900" ry="80" fill="#526070" opacity="0.22"/>
+    <ellipse cx="1900" cy="1500" rx="1000" ry="90" fill="#4b5866" opacity="0.2"/>
+    <ellipse cx="1280" cy="1380" rx="700" ry="50" fill="#5f6d7c" opacity="0.14"/>
+  </g>
+
+  <!-- worgen eyes in the dark -->
+  <g fill="#ffd34d" filter="url(#soft)" opacity="0.8">
+    <ellipse cx="1132" cy="1262" rx="5" ry="3"/><ellipse cx="1152" cy="1262" rx="5" ry="3"/>
+  </g>
+</svg>

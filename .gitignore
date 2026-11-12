@@ -1,0 +1,5 @@
+# Written by Herdr on every start, and per-machine caches
+gpui-kit.d.ts
+jsconfig.json
+.cache.json
+__pycache__/

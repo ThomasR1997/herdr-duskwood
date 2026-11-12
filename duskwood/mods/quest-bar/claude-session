@@ -1,0 +1,59 @@
+#!/bin/sh
+# Starts Claude Code for Herdr (the Duskwood layout's Claude button, space + and quest Accept): the newest Opus at xhigh effort. In a repo listed
+# in ~/.config/herdr-app/cloud-repos (GitHub owner/name, one per line), it starts a
+# cloud session (claude --cloud) in your Claude org instead of running on this Mac.
+#
+#   claude-session [task]    task: the first prompt, e.g. "/bmad-build 9.1"
+#   claude-session --dry-run [task]    print what it would run
+
+dry=""
+[ "$1" = "--dry-run" ] && { dry=1; shift; }
+
+where="local"
+remote=$(git remote get-url origin 2>/dev/null | sed -E 's#^(https://github.com/|git@github.com:)##; s#\.git$##' | tr 'A-Z' 'a-z')
+if [ -n "$remote" ] && grep -qixF "$remote" "$HOME/.config/herdr-app/cloud-repos" 2>/dev/null; then
+  where="cloud"
+fi
+
+# A cloud session needs its task up front (claude --cloud requires a description):
+# ask for one when none was given. Left empty, Claude starts on this Mac instead.
+if [ "$where" = "cloud" ] && [ -z "$1" ] && [ -z "$dry" ] && [ -t 0 ]; then
+  printf '\033[33m☁  Cloud session for %s\033[0m\n' "$remote"
+  printf 'What should it work on? (empty: run on this Mac instead)\n\033[33m❯\033[0m '
+  IFS= read -r task
+  if [ -n "$task" ]; then set -- "$task"; else where="local"; fi
+fi
+
+if [ "$where" = "local" ]; then
+  set -- claude --model opus --effort xhigh ${1:+"$1"}
+  if [ -n "$dry" ]; then echo "local: $*"; exit 0; fi
+  exec "$@"
+fi
+
+if [ -n "$dry" ]; then echo "cloud: claude --model opus --effort xhigh --cloud $1"; exit 0; fi
+
+# `claude --cloud` creates the session and exits: attaching a terminal to a cloud
+# session isn't enabled for this account. So the session opens on claude.ai/code,
+# and this tab stays as its card, with a way to pull it down to this Mac.
+# It only creates a session from a terminal, so it runs under `script`: a real
+# terminal for claude, and a copy of what it prints for the link.
+log=$(mktemp -t claude-cloud)
+script -q "$log" claude --model opus --effort xhigh --cloud "$1"
+out=$(tr -d '\r' < "$log")
+rm -f "$log"
+url=$(printf '%s\n' "$out" | grep -oE 'https://claude\.ai/code/session_[A-Za-z0-9_]+' | head -1)
+id=$(printf '%s\n' "$url" | grep -oE 'session_[A-Za-z0-9_]+')
+title=$(printf '%s\n' "$out" | sed -n 's/^Created cloud session: //p' | head -1)
+[ -z "$url" ] && exit 0
+open "$url"
+
+printf '\n\033[33m☁  %s is running in the cloud\033[0m and opened on claude.ai/code.\n' "${title:-The session}"
+while :; do
+  printf '\n  \033[33mo\033[0m  open it again    \033[33mt\033[0m  pull it to this Mac (teleport)    \033[33mq\033[0m  close this tab\n\033[33m❯\033[0m '
+  IFS= read -r key || exit 0
+  case "$key" in
+    o|O) open "$url" ;;
+    t|T) exec claude --teleport "$id" ;;
+    q|Q) [ -n "$HC_TERMINAL_ID" ] && hc kill "$HC_TERMINAL_ID" >/dev/null 2>&1; exit 0 ;;
+  esac
+done
